@@ -1,0 +1,27 @@
+<h1>Generated Report</h1>
+
+<%= form_tag generate_report_path, method: :post, id: "report_form" do %>
+  <label for="start_date">Start Date:</label>
+  <%= date_field_tag :start_date %>
+
+  <label for="end_date">End Date:</label>
+  <%= date_field_tag :end_date %>
+
+  <%= submit_tag "Generate Report" %>
+<% end %>
+
+<script>
+    document.getElementById("report_form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Get the selected start date and end date
+        var startDate = document.getElementById("start_date").value;
+        var endDate = document.getElementById("end_date").value;
+
+        // Perform any necessary validations
+
+        // Manually submit the form using JavaScript
+        this.submit();
+    });
+</script>
+<%= link_to 'На головну', root_path, class: 'btn btn-primary' %>

@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root to: 'home#index'
+  get 'reports', to: 'reports#index'
+  post 'reports', to: 'reports#generate'
+  post '/reports/generate', to: 'reports#generate', as: 'generate_report'
 end

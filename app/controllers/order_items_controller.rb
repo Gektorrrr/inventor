@@ -13,6 +13,8 @@ class OrderItemsController < ApplicationController
   # GET /order_items/new
   def new
     @order_item = OrderItem.new
+    @orders = Order.all
+    @products = Product.all
   end
 
   # GET /order_items/1/edit

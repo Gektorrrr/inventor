@@ -25,12 +25,17 @@ class ShipmentsController < ApplicationController
     @shipment = Shipment.new(shipment_params)
 
     respond_to do |format|
-      if @shipment.save
-        format.html { redirect_to shipment_url(@shipment), notice: "Shipment was successfully created." }
-        format.json { render :show, status: :created, location: @shipment }
+      if @shipment.shipment_date > @shipment.order.order_date
+        if @shipment.save
+          format.html { redirect_to shipment_url(@shipment), notice: "Shipment was successfully created." }
+          format.json { render :show, status: :created, location: @shipment }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @shipment.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @shipment.errors, status: :unprocessable_entity }
+        format.html { redirect_to new_shipment_path, alert: "Shipment date should be later than order date." }
+        format.json { render json: { error: "Shipment date should be later than order date." }, status: :unprocessable_entity }
       end
     end
   end

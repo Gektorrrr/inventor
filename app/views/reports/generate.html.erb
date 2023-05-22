@@ -1,0 +1,17 @@
+<h1>Generated Report</h1>
+
+<h2>Shipments</h2>
+<% @shipments.each do |shipment| %>
+  <p>Shipment ID: <%= shipment.id %></p>
+  <p>Shipment Date: <%= shipment.shipment_date %></p>
+  <p>Shipment Order: <%= shipment.order_id %></p>
+<% end %>
+
+<h2>Orders</h2>
+<% @orders.each do |order| %>
+  <p>Order ID: <%= order.id %></p>
+  <p>Order Date: <%= order.order_date %></p>
+  <p>Order Customer: <%= order.customer %></p>
+  <p>Order Status: <%= order.status %></p>
+<% end %>
+<%= link_to "Back to Reports", reports_path %>

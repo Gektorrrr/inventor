@@ -11,14 +11,13 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :order_id, style: "display: block" %>
-    <%= form.text_field :order_id %>
+  <div class="field">
+    <%= form.label :order_id %>
+    <%= form.collection_select :order_id, @orders, :id, :customer %>
   </div>
-
-  <div>
-    <%= form.label :product_id, style: "display: block" %>
-    <%= form.text_field :product_id %>
+  <div class="field">
+    <%= form.label :product_id, style: "display:block"  %>
+    <%= form.collection_select :product_id, @products, :id, :name %>
   </div>
 
   <div>
