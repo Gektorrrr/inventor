@@ -19,6 +19,9 @@ class OrderItemsController < ApplicationController
 
   # GET /order_items/1/edit
   def edit
+    @order_item = OrderItem.find(params[:id])
+    @orders = Order.all
+    @products = Product.all
   end
 
   # POST /order_items or /order_items.json
