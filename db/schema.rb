@@ -14,6 +14,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_22_174606) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "customers", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "order_items", force: :cascade do |t|
     t.bigint "order_id", null: false
     t.bigint "product_id", null: false
@@ -25,19 +32,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_22_174606) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "customer"
+    t.bigint "customer_id", null: false
     t.date "order_date"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
   create_table "products", force: :cascade do |t|
+    t.bigint "supplier_id", null: false
     t.string "name"
     t.integer "quantity"
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["supplier_id"], name: "index_products_on_supplier_id"
   end
 
   create_table "shipments", force: :cascade do |t|
@@ -48,7 +58,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_22_174606) do
     t.index ["order_id"], name: "index_shipments_on_order_id"
   end
 
+  create_table "suppliers", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
+  add_foreign_key "orders", "customers"
+  add_foreign_key "products", "suppliers"
   add_foreign_key "shipments", "orders"
 end

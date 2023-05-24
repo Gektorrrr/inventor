@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
-
   # GET /products or /products.json
   def index
     if params[:search]
@@ -17,12 +16,16 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @suppliers = Supplier.all
   end
 
   # GET /products/1/edit
   def edit
+    @suppliers = Supplier.all
   end
-
+  def custom_query_results
+    @custom_query_results = execute_custom_query
+  end
   # POST /products or /products.json
   def create
     @product = Product.new(product_params)
@@ -69,6 +72,7 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :quantity, :price)
+      params.require(:product).permit(:supplier_id, :name, :quantity, :price)
     end
+
 end

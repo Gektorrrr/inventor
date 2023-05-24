@@ -20,10 +20,8 @@
       <%= form.label :order_id %>
       <%= form.collection_select :order_id, @orders, :id, :customer %>
     </div>
-    <div class="field">
-      <%= form.label :product_id %>
-      <%= form.collection_select :product_id, @products, :id, :name %>
-    </div>    <div>
+
+    <div>
       <%= form.label :shipment_date, style: "display: block" %>
       <%= form.date_field :shipment_date %>
     </div>

@@ -16,9 +16,9 @@
       </div>
     <% end %>
 
-    <div>
-      <%= form.label :customer, style: "display: block" %>
-      <%= form.text_field :customer %>
+    <div class="field">
+      <%= form.label :customer_id %>
+      <%= form.collection_select :customer_id, @customers, :id, :name %>
     </div>
 
     <div>

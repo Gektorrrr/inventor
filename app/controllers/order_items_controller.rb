@@ -28,13 +28,20 @@ class OrderItemsController < ApplicationController
   def create
     @order_item = OrderItem.new(order_item_params)
 
-    respond_to do |format|
-      if @order_item.save
-        format.html { redirect_to order_item_url(@order_item), notice: "Order item was successfully created." }
-        format.json { render :show, status: :created, location: @order_item }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @order_item.errors, status: :unprocessable_entity }
+    if @order_item.quantity >= 0
+      respond_to do |format|
+        if @order_item.save
+          format.html { redirect_to order_item_url(@order_item), notice: "Order item was successfully created." }
+          format.json { render :show, status: :created, location: @order_item }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @order_item.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to new_order_item_path, alert: "Quantity cannot be less than 0." }
+        format.json { render json: { error: "Quantity cannot be less than 0." }, status: :unprocessable_entity }
       end
     end
   end
@@ -42,15 +49,24 @@ class OrderItemsController < ApplicationController
   # PATCH/PUT /order_items/1 or /order_items/1.json
   def update
     respond_to do |format|
-      if @order_item.update(order_item_params)
-        format.html { redirect_to order_item_url(@order_item), notice: "Order item was successfully updated." }
-        format.json { render :show, status: :ok, location: @order_item }
+      if @order_item.quantity >= 0
+        respond_to do |format|
+          if @order_item.save
+            format.html { redirect_to order_item_url(@order_item), notice: "Order item was successfully updated." }
+            format.json { render :show, status: :ok, location: @order_item }
+          else
+            format.html { render :edit, status: :unprocessable_entity }
+            format.json { render json: @order_item.errors, status: :unprocessable_entity }
+          end
+        end
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @order_item.errors, status: :unprocessable_entity }
+        respond_to do |format|
+          format.html { redirect_to order_items_path, alert: "Quantity cannot be less than 0." }
+          format.json { render json: { error: "Quantity cannot be less than 0." }, status: :unprocessable_entity }
+        end
       end
     end
-  end
+    end
 
   # DELETE /order_items/1 or /order_items/1.json
   def destroy

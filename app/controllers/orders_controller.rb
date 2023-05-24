@@ -17,10 +17,12 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @customers = Customer.all
   end
 
   # GET /orders/1/edit
   def edit
+    @customers = Customer.all
   end
 
   # POST /orders or /orders.json
@@ -69,6 +71,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:customer, :order_date, :status)
+      params.require(:order).permit(:customer_id, :order_date, :status)
     end
 end

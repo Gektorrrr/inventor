@@ -15,6 +15,10 @@
         </ul>
       </div>
     <% end %>
+    <div class="field">
+      <%= form.label :supplier_id %>
+      <%= form.collection_select :supplier_id, @suppliers, :id, :name %>
+    </div>
 
     <div>
       <%= form.label :name, style: "display: block" %>
