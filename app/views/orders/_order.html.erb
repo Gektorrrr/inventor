@@ -1,17 +1,26 @@
-<div id="<%= dom_id order %>">
-  <p>
-    <strong>Customer:</strong>
-    <%= order.customer %>
-  </p>
+<link rel="stylesheet" href="../../assets/stylesheets/stylesheet.css">
+<body>
 
-  <p>
-    <strong>Order date:</strong>
-    <%= order.order_date %>
-  </p>
+<main>
+  <div class="boxy" id="<%= dom_id order %>">
+    <p>
+      <strong>Customer:</strong>
+      <%= order.customer %>
+    </p>
 
-  <p>
-    <strong>Status:</strong>
-    <%= order.status %>
-  </p>
+    <p>
+      <strong>Order date:</strong>
+      <%= order.order_date %>
+    </p>
 
-</div>
+    <p>
+      <strong>Status:</strong>
+      <%= order.status %>
+    </p>
+
+  </div>
+
+</main>
+
+
+</body>

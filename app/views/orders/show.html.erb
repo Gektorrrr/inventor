@@ -1,10 +1,30 @@
-<p style="color: green"><%= notice %></p>
+<link rel="stylesheet" href="../../assets/stylesheets/stylesheet.css">
+<body>
+<header>
+  <h1>Warehouse management system</h1>
+</header>
 
-<%= render @order %>
+<main>
 
-<div>
-  <%= link_to "Edit this order", edit_order_path(@order) %> |
-  <%= link_to "Back to orders", orders_path %>
+  <p style="color: green"><%= notice %></p>
 
-  <%= button_to "Destroy this order", @order, method: :delete %>
-</div>
+  <div class="boxy">
+
+    <%= render @order %>
+
+    <div>
+      <%= link_to "Edit this order", edit_order_path(@order) , style: 'margin-top: 10px; background-color: rgb(248, 203, 210)'  %> |
+      <%= link_to "Back to orders", orders_path  , style: 'margin-top: 10px; background-color: rgb(248, 203, 210)' %>
+
+      <%= button_to "Destroy this order", @order, method: :delete , style: 'margin-top: 10px; background-color: rgb(248, 203, 210)'  %>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  <h3>@shlykov @tkachenko @naboishchykov @strelchuk</h3>
+</footer>
+
+</body>

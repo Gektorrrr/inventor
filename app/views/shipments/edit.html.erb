@@ -1,10 +1,31 @@
-<h1>Editing shipment</h1>
+<link rel="stylesheet" href="../../assets/stylesheets/stylesheet.css">
+<body>
+<header>
+  <h1>Warehouse management system</h1>
+</header>
 
-<%= render "form", shipment: @shipment %>
+<main>
 
-<br>
+  <div class="boxy">
 
-<div>
-  <%= link_to "Show this shipment", @shipment %> |
-  <%= link_to "Back to shipments", shipments_path %>
-</div>
+
+    <h2>Editing shipment</h2>
+
+    <%= render "form", shipment: @shipment  , style: 'margin-top: 10px; background-color: rgb(248, 203, 210)' %>
+
+    <br>
+
+    <div>
+      <%= link_to "Show this shipment", @shipment  , style: 'margin-top: 10px; background-color: rgb(248, 203, 210)' %>
+      <%= link_to "Back to shipments", shipments_path  , style: 'margin-top: 10px; background-color: rgb(248, 203, 210)' %>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  <h3>@shlykov @tkachenko @naboishchykov @strelchuk</h3>
+</footer>
+
+</body>

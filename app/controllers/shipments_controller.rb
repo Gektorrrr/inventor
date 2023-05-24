@@ -41,22 +41,23 @@ class ShipmentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /shipments/1 or /shipments/1.json
   def update
-    respond_to do |format|
     if @shipment.shipment_date > @shipment.order.order_date
-      if @shipment.update(shipment_params)
-        format.html { redirect_to shipment_url(@shipment), notice: "Shipment was successfully created." }
-        format.json { render :show, status: :created, location: @shipment }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @shipment.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @shipment.update(shipment_params)
+          format.html { redirect_to shipment_url(@shipment), notice: "Shipment was successfully updated." }
+          format.json { render :show, status: :ok, location: @shipment }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @shipment.errors, status: :unprocessable_entity }
+        end
       end
     else
-      format.html { redirect_to new_shipment_path, alert: "Shipment date should be later than order date." }
-      format.json { render json: { error: "Shipment date should be later than order date." }, status: :unprocessable_entity }
+      respond_to do |format|
+        format.html { redirect_to edit_path, alert: "Shipment date should be later than order date." }
+        format.json { render json: { error: "Shipment date should be later than order date." }, status: :unprocessable_entity }
+      end
     end
-  end
   end
 
   # DELETE /shipments/1 or /shipments/1.json

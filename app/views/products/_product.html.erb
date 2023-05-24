@@ -1,17 +1,27 @@
-<div id="<%= dom_id product %>">
-  <p>
-    <strong>Name:</strong>
-    <%= product.name %>
-  </p>
+<link rel="stylesheet" href="../../assets/stylesheets/stylesheet.css">
+<body>
 
-  <p>
-    <strong>Quantity:</strong>
-    <%= product.quantity %>
-  </p>
+<main>
 
-  <p>
-    <strong>Price:</strong>
-    <%= product.price %>
-  </p>
+  <div class="boxy" id="<%= dom_id product %>">
+    <p>
+      <strong>Name:</strong>
+      <%= product.name %>
+    </p>
 
-</div>
+    <p>
+      <strong>Quantity:</strong>
+      <%= product.quantity %>
+    </p>
+
+    <p>
+      <strong>Price:</strong>
+      <%= product.price %>
+    </p>
+
+  </div>
+
+</main>
+
+
+</body>

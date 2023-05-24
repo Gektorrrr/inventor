@@ -1,10 +1,30 @@
-<h1>Editing order</h1>
+<link rel="stylesheet" href="../../assets/stylesheets/stylesheet.css">
+<body>
+<header>
+  <h1>Warehouse management system</h1>
+</header>
 
-<%= render "form", order: @order %>
+<main>
 
-<br>
+  <div class="boxy">
 
-<div>
-  <%= link_to "Show this order", @order %> |
-  <%= link_to "Back to orders", orders_path %>
-</div>
+    <h2>Editing order</h2>
+
+    <%= render "form", order: @order, style: 'margin-top: 10px; background-color: rgb(248, 203, 210)'  %>
+
+    <br>
+
+    <div>
+      <%= link_to "Show this order", @order , style: 'margin-top: 10px; background-color: rgb(248, 203, 210)' %> |
+      <%= link_to "Back to orders", orders_path , style: 'margin-top: 10px; background-color: rgb(248, 203, 210)' %>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  <h3>@shlykov @tkachenko @naboishchykov @strelchuk</h3>
+</footer>
+
+</body>
