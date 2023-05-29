@@ -19,7 +19,7 @@
 
     <div class="field">
       <%= form.label :order_id %>
-      <%= form.collection_select :order_id, @orders, :id, :customer %>
+      <%= form.collection_select :order_id, @orders, :id, :order_id %>
     </div>
     <div class="field">
       <%= form.label :product_id, style: "display:block"  %>
